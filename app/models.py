@@ -11,3 +11,10 @@ class Post(Base):
   content: Mapped[str]
   published: Mapped[bool] = mapped_column(server_default='TRUE')
   created_at: Mapped[datetime] = mapped_column(server_default=text('now()'))
+
+class User(Base):
+  __tablename__ = "user"
+  id: Mapped[int] = mapped_column(primary_key=True, autoincrement='auto')
+  email: Mapped[str] = mapped_column(unique=True)
+  password: Mapped[str]
+  created_at: Mapped[datetime] = mapped_column(server_default=text('now()'))
